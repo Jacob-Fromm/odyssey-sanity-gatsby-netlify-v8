@@ -15,9 +15,32 @@ export const query = graphql`
   query IndexPageQuery {
     site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
       title
+      subtitle
       description
       keywords
     }
+    articles: allSanityArticle {
+    edges {
+      node {
+        _id
+        headline
+        image {
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
+          }
+        }
+        slug {
+          current
+        }
+        url
+      }
+    }
+  }
     projects: allSanitySampleProject(
       limit: 6
       sort: {fields: [publishedAt], order: DESC}
@@ -70,8 +93,10 @@ const IndexPage = props => {
     )
   }
 
+  const articles = (data || {}).articles
   const site = (data || {}).site
   const projectNodes = (data || {}).projects
+  
     ? mapEdgesToNodes(data.projects)
       .filter(filterOutDocsWithoutSlugs)
       .filter(filterOutDocsPublishedInTheFuture)
@@ -82,12 +107,13 @@ const IndexPage = props => {
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     )
   }
-
+  console.log("articles", articles)
   return (
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
+        <h1>Welcome to {site.title}</h1>
+        <h2>{site.subtitle}</h2>
         {projectNodes && (
           <ProjectPreviewGrid
             title='Latest projects'
