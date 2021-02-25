@@ -10,23 +10,17 @@ const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   plugins: [
-    {
-      resolve: 'gatsby-source-sanity',
-      options: {
-        projectId: 'tnd2c0o9',
-        dataset: 'production',
-        // a token with read permissions is required
-        // if you have a private dataset
-        token: process.env.MY_SANITY_TOKEN,
-      },
-    },
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-sanity',
       options: {
         ...clientConfig.sanity,
-        token,
+        projectId: 'tnd2c0o9',
+        dataset: 'production',
+        // a token with read permissions is required
+        // if you have a private dataset
+        token: process.env.MY_SANITY_TOKEN,
         watchMode: !isProd,
         overlayDrafts: !isProd && token
       }
