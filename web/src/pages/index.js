@@ -74,6 +74,7 @@ const IndexPage = props => {
   
   const site = (data || {}).site
   const projectNodes = (data || {}).projects
+  // const articleNodes = (data || {}).articles
   
     ? mapEdgesToNodes(data.projects)
       .filter(filterOutDocsWithoutSlugs)

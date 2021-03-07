@@ -42,10 +42,14 @@ const Articles = ({ data }) => {
                       <li key={article.slug.current} style={{
                           flex: '1 45%', 
                           maxWidth: '45%',
-                          margin: '1rem'}}>
+                          margin: '1rem',
+                          flexWrap: 'wrap'}}>
                         <h2 style={{ fontSize: '24px'}}>{article.headline}</h2>
                         <Image fluid={article.image.asset.fluid} alt={article.headline} />
-                        <a href={article.url}>for {article.publication}</a>
+                        <a href={article.url}  style={{
+                          display: 'block',
+                          marginTop: '1rem'
+                        }}>for {article.publication}</a>
                       </li>  
                     ))}
                 </ul>
