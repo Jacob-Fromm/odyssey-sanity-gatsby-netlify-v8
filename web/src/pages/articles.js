@@ -32,7 +32,7 @@ const Articles = ({ data }) => {
     return(
         <Layout>
             <Container>
-                <h1>articles</h1>
+                <h1>writing</h1>
                 <ul style={{
                     listStyle: 'none', 
                     display: 'flex', 
