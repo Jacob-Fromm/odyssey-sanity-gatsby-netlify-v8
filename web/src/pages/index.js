@@ -127,7 +127,7 @@ const IndexPage = props => {
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
-        <h1>Welcome to {site.title}</h1>
+        <h1>This is {site.title}</h1>
         <h2>{site.subtitle}</h2>
         <h3>Articles</h3>
         {articleNodes && (
