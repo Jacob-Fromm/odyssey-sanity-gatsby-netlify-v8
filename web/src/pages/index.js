@@ -20,10 +20,11 @@ export const query = graphql`
       description
       keywords
     }
-    allSanityArticle(limit: 6, sort: {order: DESC, fields: publicationDate}) {
+    allSanityArticle(limit: 6, sort: {fields: publicationDate, order: DESC}, filter: {slug: {current: {ne: "null"}}}) {
     edges {
       node {
         id
+        headline
         image {
           crop {
             _key
@@ -36,14 +37,17 @@ export const query = graphql`
           hotspot {
             _key
             _type
-            height
-            width
             x
             y
+            width
+            height
+          }
+          asset {
+            _id
           }
         }
-        headline
         publication
+        publicationDate(formatString: "")
         url
         slug {
           current
@@ -51,7 +55,45 @@ export const query = graphql`
       }
     }
   }
-}
+     projects: allSanitySampleProject(
+      limit: 6
+      sort: {fields: [publishedAt], order: DESC}
+      filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
+    ) {
+      edges {
+        node {
+          id
+          mainImage {
+            crop {
+              _key
+              _type
+              top
+              bottom
+              left
+              right
+            }
+            hotspot {
+              _key
+              _type
+              x
+              y
+              height
+              width
+            }
+            asset {
+              _id
+            }
+            alt
+          }
+          title
+          _rawExcerpt
+          slug {
+            current
+          }
+        }
+      }
+    }
+  }
 `
 
 const IndexPage = props => {
@@ -68,7 +110,7 @@ const IndexPage = props => {
   
   const site = (data || {}).site
   const projectNodes = (data || {}).projects
-  const articleNodes = (data || {}).articles
+  const articleNodes = (data || {}).allSanityArticle
   
     ? mapEdgesToNodes(data.projects)
       .filter(filterOutDocsWithoutSlugs)
@@ -80,7 +122,7 @@ const IndexPage = props => {
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     )
   }
-  console.log("data", data)
+  console.log("articles", data.allSanityArticle)
   return (
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />

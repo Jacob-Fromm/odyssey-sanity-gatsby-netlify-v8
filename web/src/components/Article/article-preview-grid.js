@@ -5,6 +5,7 @@ import ArticlePreview from './article-preview'
 import styles from '../project-preview-grid.module.css'
 
 function ArticlePreviewGrid(props) {
+    console.log("article-preview-grid props", props)
     return (
         <div className={styles.root}>
             {props.headline && <h2 className={styles.headline}>{props.headline}</h2>}
