@@ -7,7 +7,8 @@ import {
 } from '../lib/helpers'
 import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
-import ProjectPreviewGrid from '../components/project-preview-grid'
+import ArticlePreviewGrid from '../components/Article/article-preview-grid'
+import Articles from './articles'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
 
@@ -19,45 +20,38 @@ export const query = graphql`
       description
       keywords
     }
-    projects: allSanitySampleProject(
-      limit: 6
-      sort: {fields: [publishedAt], order: DESC}
-      filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
-    ) {
-      edges {
-        node {
-          id
-          mainImage {
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-            alt
+    allSanityArticle(limit: 6, sort: {order: DESC, fields: publicationDate}) {
+    edges {
+      node {
+        id
+        image {
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
           }
-          title
-          _rawExcerpt
-          slug {
-            current
+          hotspot {
+            _key
+            _type
+            height
+            width
+            x
+            y
           }
+        }
+        headline
+        publication
+        url
+        slug {
+          current
         }
       }
     }
   }
+}
 `
 
 const IndexPage = props => {
@@ -74,6 +68,7 @@ const IndexPage = props => {
   
   const site = (data || {}).site
   const projectNodes = (data || {}).projects
+  const articleNodes = (data || {}).articles
   
     ? mapEdgesToNodes(data.projects)
       .filter(filterOutDocsWithoutSlugs)
@@ -85,6 +80,7 @@ const IndexPage = props => {
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     )
   }
+  console.log("data", data)
   return (
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
@@ -92,10 +88,10 @@ const IndexPage = props => {
         <h1>Welcome to {site.title}</h1>
         <h2>{site.subtitle}</h2>
         <h3>Articles</h3>
-        {projectNodes && (
-          <ProjectPreviewGrid
-            title='Latest projects'
-            nodes={projectNodes}
+        {articleNodes && (
+          <ArticlePreviewGrid
+            title='Latest Articles'
+            nodes={articleNodes}  
             browseMoreHref='/archive/'
           />
         )}
