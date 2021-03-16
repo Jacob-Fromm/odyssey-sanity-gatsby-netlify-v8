@@ -4,7 +4,15 @@ import Layout from '../containers/layout'
 import Container from '../components/container'
 import { graphql } from 'gatsby'
 import Image from 'gatsby-image'
-// import ProjectPreview from '../components/project-preview'
+
+//imported from project-preview.js
+import { cn, buildImageObj } from '../lib/helpers'
+import { imageUrlFor } from '../lib/image-url'
+import BlockText from '../components/block-text'
+
+import styles from '../components/project-preview.module.css'
+import { responsiveTitle3 } from '../components/typography.module.css'
+
 export const query = graphql`
 query MyQuery {
   allSanityArticle {

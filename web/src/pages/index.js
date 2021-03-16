@@ -20,41 +20,6 @@ export const query = graphql`
       description
       keywords
     }
-    allSanityArticle(limit: 6, sort: {fields: publicationDate, order: DESC}, filter: {slug: {current: {ne: "null"}}}) {
-    edges {
-      node {
-        id
-        headline
-        image {
-          crop {
-            _key
-            _type
-            top
-            bottom
-            left
-            right
-          }
-          hotspot {
-            _key
-            _type
-            x
-            y
-            width
-            height
-          }
-          asset {
-            _id
-          }
-        }
-        publication
-        publicationDate(formatString: "")
-        url
-        slug {
-          current
-        }
-      }
-    }
-  }
      projects: allSanitySampleProject(
       limit: 6
       sort: {fields: [publishedAt], order: DESC}
