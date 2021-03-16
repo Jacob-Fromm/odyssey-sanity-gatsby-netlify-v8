@@ -3,7 +3,7 @@ import SEO from '../components/seo'
 import Layout from '../containers/layout' 
 import Container from '../components/container'
 import { graphql } from 'gatsby'
-import Image from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image"
 
 //imported from project-preview.js
 import { cn, buildImageObj } from '../lib/helpers'
@@ -53,7 +53,7 @@ const Articles = ({ data }) => {
                           margin: '1rem',
                           flexWrap: 'wrap'}}>
                         <h2 style={{ fontSize: '24px'}}>{article.headline}</h2>
-                        <Image fluid={article.image.asset.fluid} alt={article.headline} />
+                        <GatsbyImage fluid={article.image.asset.fluid} alt={article.headline} />
                         <a href={article.url}  style={{
                           display: 'block',
                           marginTop: '1rem'
