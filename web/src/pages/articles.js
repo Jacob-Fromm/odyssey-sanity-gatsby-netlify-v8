@@ -15,7 +15,7 @@ import { responsiveTitle3 } from '../components/typography.module.css'
 
 export const query = graphql`
 query MyQuery {
-  allSanityArticle {
+  articles: allSanityArticle {
     edges {
       node {
         headline
@@ -37,10 +37,11 @@ query MyQuery {
 }
 `
 const Articles = ({ data }) => {
+  console.log("articles data", data)
     return(
         <Layout>
             <Container>
-                <ul style={{
+                {/* <ul style={{
                     listStyle: 'none', 
                     display: 'flex', 
                     alignItems: 'space-betweetn', 
@@ -59,7 +60,7 @@ const Articles = ({ data }) => {
                         }}>for {article.publication}</a>
                       </li>  
                     ))}
-                </ul>
+                </ul> */}
             </Container>
         </Layout>
     )
