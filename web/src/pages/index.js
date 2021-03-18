@@ -107,19 +107,11 @@ const IndexPage = props => {
       <Container>
         <h1>Welcome to {site.title}</h1>
         <h2>{site.subtitle}</h2>
-        <h3>Articles</h3>
         <ArticlePreviewGrid
           title='Latest Articles'
           articles={data.articles.edges}
           browseMoreHref='/archive/'
           />
-        {/* {articleNodes && (
-          <ArticlePreviewGrid
-            title='Latest Articles'
-            nodes={articleNodes}  
-            browseMoreHref='/archive/'
-          />
-        )} */}
       </Container>
     </Layout>
   )
