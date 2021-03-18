@@ -30,6 +30,13 @@ module.exports = {
         // watchMode: !isProd,
         // overlayDrafts: !isProd && token
       }
+    },
+    {
+      resolve: `@lekoarts/gatsby-theme-cara`,
+      options: {
+        // basePath defaults to `/`
+        basePath: `/sideproject`,
+      }
     }
   ]
 }
