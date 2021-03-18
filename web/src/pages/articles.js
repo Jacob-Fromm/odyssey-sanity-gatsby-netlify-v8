@@ -7,7 +7,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 
 //imported from project-preview.js
 import { cn, buildImageObj } from '../lib/helpers'
-import { imageUrlFor } from '../lib/image-url'
+import { urlFor } from '../lib/image-url'
 import BlockText from '../components/block-text'
 
 import styles from '../components/project-preview.module.css'

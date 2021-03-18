@@ -34,11 +34,34 @@ export default {
         {
             name: 'image',
             title: 'Article Image',
-            type: 'image',
-            options: {
-                hotspot: true
-            }
+            type: 'figure'
         },
+        // {
+        //     name: 'image',
+        //     title: 'Article Image',
+        //     type: 'image',
+        //     hidden: false,
+        //     readOnly: false,
+        //     description: 'article image',
+        //     options: {
+        //         hotspot: true
+        //     },
+        //     fields: [
+        //         {
+        //             name: 'caption',
+        //             type: 'string',
+        //             title: 'Caption',
+        //             options: {
+        //                 isHighlighted: true
+        //             }
+        //         },
+        //         {
+        //             name: 'attribution',
+        //             type: 'string',
+        //             title: 'Attribution',
+        //         }
+        //     ]
+        // },
         {
             name: 'author',
             title: 'Author',

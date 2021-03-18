@@ -1,6 +1,6 @@
 import React from 'react'
 import {buildImageObj} from '../lib/helpers'
-import {imageUrlFor} from '../lib/image-url'
+import {urlFor} from '../lib/image-url'
 import {ucfirst} from '../lib/string-utils'
 
 import styles from './role-list.module.css'
@@ -16,7 +16,7 @@ function RoleList ({items, title}) {
               <div className={styles.avatar}>
                 {item.person && item.person.image && item.person.image.asset && (
                   <img
-                    src={imageUrlFor(buildImageObj(item.person.image))
+                    src={urlFor(buildImageObj(item.person.image))
                       .width(100)
                       .height(100)
                       .fit('crop')

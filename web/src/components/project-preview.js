@@ -1,7 +1,7 @@
 import {Link} from 'gatsby'
 import React from 'react'
 import {cn, buildImageObj} from '../lib/helpers'
-import {imageUrlFor} from '../lib/image-url'
+import {urlFor} from '../lib/image-url'
 import BlockText from './block-text'
 
 import styles from './project-preview.module.css'
@@ -14,7 +14,7 @@ function ProjectPreview (props) {
       <div className={styles.leadMediaThumb}>
         {props.mainImage && props.mainImage.asset && (
           <img
-            src={imageUrlFor(buildImageObj(props.mainImage))
+            src={urlFor(buildImageObj(props.mainImage))
               .width(600)
               .height(Math.floor((9 / 16) * 600))
               .url()}

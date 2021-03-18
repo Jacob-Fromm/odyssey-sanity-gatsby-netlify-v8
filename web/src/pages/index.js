@@ -23,19 +23,51 @@ export const query = graphql`
     articles: allSanityArticle {
     edges {
       node {
+        id
         headline
         slug {
           current
         }
         url
+        publication
+        publicationDate(formatString: "")
+        author {
+          name
+        }
         image {
+          _key
+          _type
+          alt
+          caption
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
+          }
+          hotspot {
+            height
+            width
+            x
+            y
+          }
           asset {
+            assetId
             fluid {
-              ...GatsbySanityImageFluid
-           }
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+              base64
+              aspectRatio
+            }
+            id
+            _id
           }
         }
-        publication
       }
     }
   }
@@ -56,7 +88,7 @@ const IndexPage = props => {
   
   const site = (data || {}).site
   const projectNodes = (data || {}).projects
-  const articleNodes = (data || {}).allSanityArticle
+  // const articleNodes = (data || {}).articles
   
     ? mapEdgesToNodes(data.projects)
       .filter(filterOutDocsWithoutSlugs)
@@ -68,7 +100,7 @@ const IndexPage = props => {
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     )
   }
-  console.log("articles", data.articles)
+  // console.log("articles", data.articles)
   return (
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
@@ -76,13 +108,18 @@ const IndexPage = props => {
         <h1>Welcome to {site.title}</h1>
         <h2>{site.subtitle}</h2>
         <h3>Articles</h3>
-        {articleNodes && (
+        <ArticlePreviewGrid
+          title='Latest Articles'
+          articles={data.articles.edges}
+          browseMoreHref='/archive/'
+          />
+        {/* {articleNodes && (
           <ArticlePreviewGrid
             title='Latest Articles'
             nodes={articleNodes}  
             browseMoreHref='/archive/'
           />
-        )}
+        )} */}
       </Container>
     </Layout>
   )
