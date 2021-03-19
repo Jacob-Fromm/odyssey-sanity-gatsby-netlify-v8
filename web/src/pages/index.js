@@ -18,6 +18,7 @@ import Layout from '../../node_modules/@lekoarts/gatsby-theme-cara/src/component
 // import StructureMenuWidget from '../../../studio/plugins/dashboard-widget-structure-menu/src/components/StructureMenuWidget'
 import Contact from '../../node_modules/@lekoarts/gatsby-theme-cara/src/components/contact'
 import About from '../../node_modules/@lekoarts/gatsby-theme-cara/src/components/about'
+import Hero from '../gatsby-theme-cara/src/components/hero'
 export const query = graphql`
   query IndexPageQuery {
     site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
@@ -109,22 +110,26 @@ const IndexPage = props => {
   console.log("articles", data.articles)
   return (
     <Layout>
+      {/* <Container> */}
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
-      <Parallax pages={4}>
-        <About offset={0} factor={1} />
-        <h1>Welcome to {site.title}</h1>
-        <h2>{site.subtitle}</h2>
+      <Parallax pages={5}>
+        <Hero offset={0} factor={1}/>
+        {/* <h1>Welcome to {site.title}</h1>
+        <h2>{site.subtitle}</h2> */}
         <ArticlePreviewGrid
           title='Latest Articles'
           articles={data.articles.edges}
           browseMoreHref='/archive/'
-          offset={2} factor={1}
+          offset={1} factor={2}
           />
           {/* <StructureMenuWidget /> */}
-          <Podcast offset={2} factor={1}/>
-          <Contact offset={1} factor={1} />
+          <Podcast offset={3} factor={1}/>
+          <Contact offset={4} factor={1} />
+        <About offset={5} factor={1} />
       </Parallax>
+      {/* </Container> */}
     </Layout>
+    
   )
 }
 
