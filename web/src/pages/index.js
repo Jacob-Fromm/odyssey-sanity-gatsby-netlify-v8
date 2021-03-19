@@ -1,4 +1,5 @@
 import React from 'react'
+import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons.cjs"
 import {graphql} from 'gatsby'
 import {
   mapEdgesToNodes,
@@ -10,8 +11,12 @@ import GraphQLErrorList from '../components/graphql-error-list'
 import ArticlePreviewGrid from '../components/Article/article-preview-grid'
 import Articles from './articles'
 import SEO from '../components/seo'
-import Layout from '../containers/layout'
-
+// import Layout from '../containers/layout'
+import Podcast from '../components/Podcast/Podcast'
+import Layout from '../../node_modules/@lekoarts/gatsby-theme-cara/src/components/layout'
+// import Hero from '@lekoarts/gatsby-theme-cara/src/components/hero'
+// import StructureMenuWidget from '../../../studio/plugins/dashboard-widget-structure-menu/src/components/StructureMenuWidget'
+import Contact from '../../node_modules/@lekoarts/gatsby-theme-cara/src/components/contact'
 export const query = graphql`
   query IndexPageQuery {
     site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
@@ -100,10 +105,11 @@ const IndexPage = props => {
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     )
   }
-  // console.log("articles", data.articles)
+  console.log("articles", data.articles)
   return (
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
+      <Parallax pages={4}>
       <Container>
         <h1>Welcome to {site.title}</h1>
         <h2>{site.subtitle}</h2>
@@ -111,8 +117,13 @@ const IndexPage = props => {
           title='Latest Articles'
           articles={data.articles.edges}
           browseMoreHref='/archive/'
+          offset={0} factor={1}
           />
+          {/* <StructureMenuWidget /> */}
+          <Podcast offset={0} factor={1}/>
+          <Contact offset={0} factor={1} />
       </Container>
+      </Parallax>
     </Layout>
   )
 }

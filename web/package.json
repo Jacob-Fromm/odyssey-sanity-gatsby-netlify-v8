@@ -24,6 +24,7 @@
     "gatsby-plugin-sharp": "^3.1.0",
     "gatsby-source-filesystem": "^3.1.0",
     "gatsby-source-sanity": "^4.0.5",
+    "gatsby-source-simplecast": "^2.2.0",
     "gatsby-transformer-sharp": "^3.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

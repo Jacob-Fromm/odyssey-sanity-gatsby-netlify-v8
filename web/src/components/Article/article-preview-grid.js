@@ -3,11 +3,12 @@ import React from 'react'
 import ArticlePreview from './article-preview'
 
 import styles from '../project-preview-grid.module.css'
+import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons.cjs'
 
 function ArticlePreviewGrid(props) {
     console.log("article-preview-grid props", props)
+    const articles = props.nodes
     return (
-       
         <div className={styles.root}>
             <h2 className={styles.title}>{props.title}</h2>
             <ul className={styles.grid}>

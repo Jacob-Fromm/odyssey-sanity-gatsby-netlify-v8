@@ -8,31 +8,61 @@ import Layout from '../containers/layout'
 import {mapEdgesToNodes, filterOutDocsWithoutSlugs} from '../lib/helpers'
 
 import {responsiveTitle1} from '../components/typography.module.css'
+import ArticlePreviewGrid from '../components/Article/article-preview-grid'
 
 export const query = graphql`
   query ArchivePageQuery {
-    projects: allSanitySampleProject(
-      limit: 12
-      sort: {fields: [publishedAt], order: DESC}
-      filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
-    ) {
-      edges {
-        node {
-          id
-          mainImage {
-            asset {
-              _id
-            }
-            alt
+    articles: allSanityArticle {
+    edges {
+      node {
+        id
+        headline
+        slug {
+          current
+        }
+        url
+        publication
+        publicationDate(formatString: "")
+        author {
+          name
+        }
+        image {
+          _key
+          _type
+          alt
+          caption
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
           }
-          title
-          _rawExcerpt
-          slug {
-            current
+          hotspot {
+            height
+            width
+            x
+            y
+          }
+          asset {
+            assetId
+            fluid {
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+              base64
+              aspectRatio
+            }
+            id
+            _id
           }
         }
       }
     }
+  }
   }
 `
 
@@ -45,14 +75,17 @@ const ArchivePage = props => {
       </Layout>
     )
   }
-  const projectNodes =
-    data && data.projects && mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
+  console.log(data)
+  // const articleNodes =
+  //   data && data.articles && mapEdgesToNodes(data.articles).filter(filterOutDocsWithoutSlugs)
+  // console.log("archive data", articleNodes)
   return (
     <Layout>
       <SEO title='Archive' />
       <Container>
-        <h1 className={responsiveTitle1}>Projects</h1>
-        {projectNodes && projectNodes.length > 0 && <ProjectPreviewGrid nodes={projectNodes} />}
+        <h1 className={responsiveTitle1}>Articles</h1>
+        {/* {articleNodes && articleNodes.length > 0 && <ArticlePreviewGrid nodes={data} />} */}
+        <ArticlePreviewGrid nodes={data.articles.edges} />
       </Container>
     </Layout>
   )
