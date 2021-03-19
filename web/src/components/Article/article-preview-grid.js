@@ -4,15 +4,15 @@ import ArticlePreview from './article-preview'
 
 import styles from '../project-preview-grid.module.css'
 import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons.cjs'
-import Divider from '@lekoarts/gatsby-theme-cara/src/elements/divider'
+import Divider from '../../gatsby-theme-cara/src/elements/divider'
 
 function ArticlePreviewGrid(props) {
     console.log("article-preview-grid props", props)
     const articles = props.nodes
     return (
         <Divider
-            bg="divider"
-            clipPath="polygon(0 16%, 100% 4%, 100% 82%, 0 94%)"
+            // bg="divider"
+            // clipPath="polygon(0 10%, 100% 4%, 100% 82%, 0 94%)"
             speed={0.2}>
         <div className={styles.root}>
             <h2 className={styles.title}>{props.title}</h2>

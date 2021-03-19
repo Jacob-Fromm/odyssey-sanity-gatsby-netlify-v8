@@ -13,12 +13,13 @@ import Articles from './articles'
 import SEO from '../components/seo'
 // import Layout from '../containers/layout'
 import Podcast from '../components/Podcast/Podcast'
-import Layout from '../../node_modules/@lekoarts/gatsby-theme-cara/src/components/layout'
+import Layout from '../gatsby-theme-cara/src/components/layout'
 // import Hero from '@lekoarts/gatsby-theme-cara/src/components/hero'
 // import StructureMenuWidget from '../../../studio/plugins/dashboard-widget-structure-menu/src/components/StructureMenuWidget'
 import Contact from '../../node_modules/@lekoarts/gatsby-theme-cara/src/components/contact'
 import About from '../../node_modules/@lekoarts/gatsby-theme-cara/src/components/about'
 import Hero from '../gatsby-theme-cara/src/components/hero'
+import Cara from '../gatsby-theme-cara/src/templates/cara'
 export const query = graphql`
   query IndexPageQuery {
     site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
@@ -109,26 +110,48 @@ const IndexPage = props => {
   }
   console.log("articles", data.articles)
   return (
-    <Layout>
-      {/* <Container> */}
+    // <Cara />
+    // <Layout >
+    <>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Parallax pages={5}>
-        <Hero offset={0} factor={1}/>
-        {/* <h1>Welcome to {site.title}</h1>
-        <h2>{site.subtitle}</h2> */}
-        <ArticlePreviewGrid
+        {/* <ParallaxLayer offset={1} speed={1}  />
+      <ParallaxLayer offset={2} speed={1}  />
+
+      <ParallaxLayer offset={0} speed={0} factor={3} /> */}
+
+        <ParallaxLayer offset={0} factor={1} speed={-0.3} >
+          <Hero />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={1} factor={1} style={{
+          'padding': '2.5vw',
+          'padding-bottom': '10vw',
+          'width': '95vw'
+        }}>
+          <ArticlePreviewGrid
           title='Latest Articles'
           articles={data.articles.edges}
           browseMoreHref='/archive/'
-          offset={1} factor={2}
+
           />
-          {/* <StructureMenuWidget /> */}
-          <Podcast offset={3} factor={1}/>
-          <Contact offset={4} factor={1} />
-        <About offset={5} factor={1} />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={2} factor={1} speed={0.5} style={{
+          'padding': '2.5vw',
+          'width': '95vw'
+        }} >
+          < Podcast />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={3} speed={0.2}>
+          <Contact />
+        </ParallaxLayer>
+        {/* <Projects /> */}
       </Parallax>
-      {/* </Container> */}
-    </Layout>
+    </>
+    // </Layout>
+
     
   )
 }
