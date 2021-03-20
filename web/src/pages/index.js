@@ -21,6 +21,7 @@ import Contact from '../components/contact'
 import About from '../../node_modules/@lekoarts/gatsby-theme-cara/src/components/about'
 import Hero from '../gatsby-theme-cara/src/components/hero'
 import Cara from '../gatsby-theme-cara/src/templates/cara'
+import Footer from '../gatsby-theme-cara/src/components/footer'
 
 
 export const query = graphql`
@@ -136,7 +137,7 @@ const IndexPage = props => {
           
         </ParallaxLayer>
 
-        <ParallaxLayer offset={1} factor={1} style={{
+        <ParallaxLayer offset={1} factor={2} style={{
           'padding': '2.5vw',
           'width': '95vw'
         }}>
@@ -148,17 +149,18 @@ const IndexPage = props => {
           />
         </ParallaxLayer>
 
-        <ParallaxLayer offset={1.5} factor={1} speed={0.5} style={{
+        <ParallaxLayer offset={2} factor={1} speed={0.5} style={{
           'padding': '2.5vw',
           'width': '95vw'
         }} >
           < Podcast />
         </ParallaxLayer>
 
-        <ParallaxLayer offset={2.25} speed={0.2}>
+        <ParallaxLayer offset={3} factor={0.5} speed={0.2}>
           <Contact />
         </ParallaxLayer>
         {/* <Projects /> */}
+        <Footer />
       </Parallax>
     </>
     // </Layout>

@@ -7,6 +7,8 @@ const Contact = () => {
         console.log(formData)
     }
     return (
+        <>
+        <h2>Astrological Chart Readings - Contact me!</h2>
         <form
             onSubmit={handleSubmit(handlePost)}
             name="contact-form"
@@ -62,6 +64,7 @@ const Contact = () => {
                 <button type="submit">Submit</button>
             </div>
         </form>
+        </>
     )
 }
 
