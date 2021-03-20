@@ -7,6 +7,7 @@ import {
   filterOutDocsPublishedInTheFuture
 } from '../lib/helpers'
 import Container from '../components/container'
+import { StaticImage } from "gatsby-plugin-image"
 import GraphQLErrorList from '../components/graphql-error-list'
 import ArticlePreviewGrid from '../components/Article/article-preview-grid'
 import Articles from './articles'
@@ -16,10 +17,12 @@ import Podcast from '../components/Podcast/Podcast'
 import Layout from '../gatsby-theme-cara/src/components/layout'
 // import Hero from '@lekoarts/gatsby-theme-cara/src/components/hero'
 // import StructureMenuWidget from '../../../studio/plugins/dashboard-widget-structure-menu/src/components/StructureMenuWidget'
-import Contact from '../../node_modules/@lekoarts/gatsby-theme-cara/src/components/contact'
+import Contact from '../components/contact'
 import About from '../../node_modules/@lekoarts/gatsby-theme-cara/src/components/about'
 import Hero from '../gatsby-theme-cara/src/components/hero'
 import Cara from '../gatsby-theme-cara/src/templates/cara'
+
+
 export const query = graphql`
   query IndexPageQuery {
     site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
@@ -121,12 +124,20 @@ const IndexPage = props => {
       <ParallaxLayer offset={0} speed={0} factor={3} /> */}
 
         <ParallaxLayer offset={0} factor={1} speed={-0.3} >
-          <Hero />
+          <Hero style={{
+            // 'backgroundImage': `url(${splashImage})`
+          }} />
+          {/* <img className="splash-image" src="web/static/assets/DAVID_SPLASH_PAGE_2.jpg" alt="photo of David Odyssey"
+            width={200}
+            height={200} /> */}
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={0} factor={0.5} speed={0.5}>
+          
         </ParallaxLayer>
 
         <ParallaxLayer offset={1} factor={1} style={{
           'padding': '2.5vw',
-          'padding-bottom': '10vw',
           'width': '95vw'
         }}>
           <ArticlePreviewGrid
@@ -137,14 +148,14 @@ const IndexPage = props => {
           />
         </ParallaxLayer>
 
-        <ParallaxLayer offset={2} factor={1} speed={0.5} style={{
+        <ParallaxLayer offset={1.5} factor={1} speed={0.5} style={{
           'padding': '2.5vw',
           'width': '95vw'
         }} >
           < Podcast />
         </ParallaxLayer>
 
-        <ParallaxLayer offset={3} speed={0.2}>
+        <ParallaxLayer offset={2.25} speed={0.2}>
           <Contact />
         </ParallaxLayer>
         {/* <Projects /> */}

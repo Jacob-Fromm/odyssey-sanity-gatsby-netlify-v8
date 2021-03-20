@@ -10,6 +10,7 @@ import person from './documents/person'
 import sampleProject from './documents/sampleProject'
 import siteSettings from './documents/siteSettings'
 import article from './documents/article'
+import contact from "./documents/contact"
 // Object types
 import bioPortableText from './objects/bioPortableText'
 import figure from './objects/figure'
@@ -37,6 +38,7 @@ export default createSchema({
     person,
     sampleProject,
     article,
+    contact,
     siteSettings
   ])
 })

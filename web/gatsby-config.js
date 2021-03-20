@@ -35,7 +35,7 @@ module.exports = {
       resolve: `@lekoarts/gatsby-theme-cara`,
       options: {
         // basePath defaults to `/`
-        basePath: `/sideproject`,
+        basePath: `/`,
       }
     }
   ]

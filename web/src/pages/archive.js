@@ -75,7 +75,7 @@ const ArchivePage = props => {
       </Layout>
     )
   }
-  console.log(data)
+  console.log("arvhive data ", data)
   // const articleNodes =
   //   data && data.articles && mapEdgesToNodes(data.articles).filter(filterOutDocsWithoutSlugs)
   // console.log("archive data", articleNodes)
@@ -85,7 +85,7 @@ const ArchivePage = props => {
       <Container>
         <h1 className={responsiveTitle1}>Articles</h1>
         {/* {articleNodes && articleNodes.length > 0 && <ArticlePreviewGrid nodes={data} />} */}
-        <ArticlePreviewGrid nodes={data.articles.edges} />
+        <ArticlePreviewGrid articles={data.articles.edges} />
       </Container>
     </Layout>
   )

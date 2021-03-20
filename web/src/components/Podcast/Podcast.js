@@ -4,7 +4,8 @@ import React from 'react'
 export default function Podcast(offset){
     return (
             <Divider>
-            <iframe frameborder="0" src="https://playlist.megaphone.fm?p=ADL3471774599" width="100%" height="482"></iframe>
+                <h1>The Luminaries Podcast</h1>
+                <iframe frameborder="0" src="https://playlist.megaphone.fm?p=ADL3471774599" width="100%" height="482"></iframe>
             </Divider>
     )
 }
