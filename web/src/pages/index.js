@@ -116,7 +116,7 @@ const IndexPage = props => {
   return (
     // <Cara />
     // <Layout >
-    <>
+    <div style={{ backgroundColor: 'red' }}>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Parallax pages={5}>
         {/* <ParallaxLayer offset={1} speed={1}  />
@@ -125,10 +125,10 @@ const IndexPage = props => {
       <ParallaxLayer offset={0} speed={0} factor={3} /> */}
 
         <ParallaxLayer offset={0} factor={1} speed={-0.3} >
-          <Hero />
-          {/* <img className="splash-image" src="web/static/assets/DAVID_SPLASH_PAGE_2.jpg" alt="photo of David Odyssey"
-            width={200}
-            height={200} /> */}
+          <Hero style={{
+            backgroundImage: `url(${imageSrc})`
+          }}/>
+          
         </ParallaxLayer>
 
         <ParallaxLayer offset={0} factor={0.5} speed={0.5}>
@@ -162,7 +162,7 @@ const IndexPage = props => {
         {/* <Projects /> */}
         <Footer />
       </Parallax>
-    </>
+    </div>
     // </Layout>
 
     
