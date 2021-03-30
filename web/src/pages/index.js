@@ -15,13 +15,13 @@ import SEO from '../components/seo'
 // import Layout from '../containers/layout'
 import Podcast from '../components/Podcast/Podcast'
 import Layout from '../gatsby-theme-cara/src/components/layout'
-// import Hero from '@lekoarts/gatsby-theme-cara/src/components/hero'
-// import StructureMenuWidget from '../../../studio/plugins/dashboard-widget-structure-menu/src/components/StructureMenuWidget'
 import Contact from '../components/contact'
 import About from '../../node_modules/@lekoarts/gatsby-theme-cara/src/components/about'
 import Hero from '../gatsby-theme-cara/src/components/hero'
 import Cara from '../gatsby-theme-cara/src/templates/cara'
 import Footer from '../gatsby-theme-cara/src/components/footer'
+// import splashImage from '../images/DAVID_SPLASH_PAGE_2.jpg'
+const imageSrc = require('../images/DAVID_SPLASH_PAGE_2.jpg')
 
 
 export const query = graphql`
@@ -112,7 +112,7 @@ const IndexPage = props => {
       'Missing "Site settings". Open the studio at http://localhost:3333 and add some content to "Site settings" and restart the development server.'
     )
   }
-  console.log("articles", data.articles)
+  console.log("props sent to APG from index.js", data.articles.edges)
   return (
     // <Cara />
     // <Layout >
@@ -125,16 +125,16 @@ const IndexPage = props => {
       <ParallaxLayer offset={0} speed={0} factor={3} /> */}
 
         <ParallaxLayer offset={0} factor={1} speed={-0.3} >
-          <Hero style={{
-            // 'backgroundImage': `url(${splashImage})`
-          }} />
+          <Hero />
           {/* <img className="splash-image" src="web/static/assets/DAVID_SPLASH_PAGE_2.jpg" alt="photo of David Odyssey"
             width={200}
             height={200} /> */}
         </ParallaxLayer>
 
         <ParallaxLayer offset={0} factor={0.5} speed={0.5}>
-          
+          {/* <img src={String(imageSrc)} alt="hero image" style={{
+            "width": '400px'
+          }} /> */}
         </ParallaxLayer>
 
         <ParallaxLayer offset={1} factor={2} style={{

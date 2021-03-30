@@ -1,10 +1,10 @@
 import React from 'react'
 import SEO from '../components/seo'
-import Layout from '../containers/layout' 
+import Layout from '../gatsby-theme-cara/src/components/layout'
 import Container from '../components/container'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from "gatsby-plugin-image"
-
+import ArticlePreviewGrid from '../components/Article/article-preview-grid'
 //imported from project-preview.js
 import { cn, buildImageObj } from '../lib/helpers'
 import { urlFor } from '../lib/image-url'
@@ -18,19 +18,51 @@ query MyQuery {
   articles: allSanityArticle {
     edges {
       node {
+        id
         headline
         slug {
           current
         }
         url
+        publication
+        publicationDate(formatString: "")
+        author {
+          name
+        }
         image {
+          _key
+          _type
+          alt
+          caption
+          crop {
+            _key
+            _type
+            top
+            bottom
+            left
+            right
+          }
+          hotspot {
+            height
+            width
+            x
+            y
+          }
           asset {
+            assetId
             fluid {
-              ...GatsbySanityImageFluid
-           }
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+              base64
+              aspectRatio
+            }
+            id
+            _id
           }
         }
-        publication
       }
     }
   }
@@ -40,28 +72,11 @@ const Articles = ({ data }) => {
   console.log("articles data", data)
     return(
         <Layout>
-            <Container>
-                {/* <ul style={{
-                    listStyle: 'none', 
-                    display: 'flex', 
-                    alignItems: 'space-betweetn', 
-                    padding: 0}}>
-                    {data.allSanityArticle.edges.map(({ node: article }) => (
-                      <li key={article.slug.current} style={{
-                          flex: '1 45%', 
-                          maxWidth: '45%',
-                          margin: '1rem',
-                          flexWrap: 'wrap'}}>
-                        <h2 style={{ fontSize: '24px'}}>{article.headline}</h2>
-                        <GatsbyImage fluid={article.image.asset.fluid} alt={article.headline} />
-                        <a href={article.url}  style={{
-                          display: 'block',
-                          marginTop: '1rem'
-                        }}>for {article.publication}</a>
-                      </li>  
-                    ))}
-                </ul> */}
-            </Container>
+          <ArticlePreviewGrid
+            title='Latest Articles'
+            articles={data.articles.edges}
+            browseMoreHref='/archive/'
+          />  
         </Layout>
     )
 }

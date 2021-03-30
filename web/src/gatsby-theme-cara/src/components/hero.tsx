@@ -7,9 +7,10 @@ import SVG from "./svg"
 import { UpDown, UpDownWide } from "../styles/animations"
 // @ts-ignore
 import Intro from "../sections/intro"
+const imageSrc = require("../../../images/DAVID_SPLASH_PAGE_2.jpg")
 
-const Hero = ({ offset, factor = 1 }: { offset: number; factor?: number }) => (
- <div >
+const Hero = ({ offset, factor = 1 }) => (
+  <div style={{ backgroundImage: `url(${imageSrc})` }}>
     <Divider speed={0.2} offset={offset} factor={factor}>
       {/* <UpDown>
         <SVG icon="triangle" hiddenMobile width={48} stroke color="icon_orange" left="10%" top="20%" />
@@ -39,7 +40,7 @@ const Hero = ({ offset, factor = 1 }: { offset: number; factor?: number }) => (
       <SVG icon="hexa" width={8} stroke color="icon_darker" left="80%" top="70%" /> */}
     </Divider>
     <Content sx={{ variant: `texts.bigger` }} speed={0.4} offset={offset} factor={factor}>
-      <Inner>
+      <Inner >
         <Intro />
       </Inner>
     </Content>

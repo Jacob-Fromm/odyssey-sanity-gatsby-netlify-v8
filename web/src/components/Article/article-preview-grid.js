@@ -15,12 +15,14 @@ function ArticlePreviewGrid(props) {
             // clipPath="polygon(0 10%, 100% 4%, 100% 82%, 0 94%)"
             speed={0.2}>
         <div className={styles.root}>
-            <h2 className={styles.title}>{props.title}</h2>
+            <Link to='/archive'>
+                <h2 className={styles.title}>{props.title}</h2>
+            </Link>
             <ul className={styles.grid}>
                 {props.nodes &&
-                    props.articles.map(node => (
-                        <li key={node.id}>
-                            <ArticlePreview {...node.node} />
+                    props.articles.map(article => (
+                        <li key={article.id}>
+                            <ArticlePreview {...article.node} />
                         </li>
                     ))}
             </ul>

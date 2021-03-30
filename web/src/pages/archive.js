@@ -4,7 +4,7 @@ import Container from '../components/container'
 import GraphQLErrorList from '../components/graphql-error-list'
 import ProjectPreviewGrid from '../components/project-preview-grid'
 import SEO from '../components/seo'
-import Layout from '../containers/layout'
+import Layout from '../gatsby-theme-cara/src/components/layout'
 import {mapEdgesToNodes, filterOutDocsWithoutSlugs} from '../lib/helpers'
 
 import {responsiveTitle1} from '../components/typography.module.css'
@@ -75,18 +75,16 @@ const ArchivePage = props => {
       </Layout>
     )
   }
-  console.log("arvhive data ", data)
+  console.log("APG props from archive", data.articles.edges)
   // const articleNodes =
   //   data && data.articles && mapEdgesToNodes(data.articles).filter(filterOutDocsWithoutSlugs)
   // console.log("archive data", articleNodes)
   return (
     <Layout>
       <SEO title='Archive' />
-      <Container>
         <h1 className={responsiveTitle1}>Articles</h1>
         {/* {articleNodes && articleNodes.length > 0 && <ArticlePreviewGrid nodes={data} />} */}
         <ArticlePreviewGrid articles={data.articles.edges} />
-      </Container>
     </Layout>
   )
 }
