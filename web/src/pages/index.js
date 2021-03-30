@@ -1,5 +1,4 @@
 import React from 'react'
-import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons.cjs"
 import {graphql} from 'gatsby'
 import {
   mapEdgesToNodes,
@@ -18,7 +17,7 @@ import Layout from '../gatsby-theme-cara/src/components/layout'
 import Contact from '../components/contact'
 import About from '../../node_modules/@lekoarts/gatsby-theme-cara/src/components/about'
 import Hero from '../gatsby-theme-cara/src/components/hero'
-import Cara from '../gatsby-theme-cara/src/templates/cara'
+
 import Footer from '../gatsby-theme-cara/src/components/footer'
 // import splashImage from '../images/DAVID_SPLASH_PAGE_2.jpg'
 const imageSrc = require('../images/DAVID_SPLASH_PAGE_2.jpg')
@@ -114,56 +113,22 @@ const IndexPage = props => {
   }
   console.log("props sent to APG from index.js", data.articles.edges)
   return (
-    // <Cara />
-    // <Layout >
-    <div style={{ backgroundColor: 'red' }}>
+    <div >
+
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
-      <Parallax pages={5}>
-        {/* <ParallaxLayer offset={1} speed={1}  />
-      <ParallaxLayer offset={2} speed={1}  />
-
-      <ParallaxLayer offset={0} speed={0} factor={3} /> */}
-
-        <ParallaxLayer offset={0} factor={1} speed={-0.3} >
-          <Hero style={{
-            backgroundImage: `url(${imageSrc})`
-          }}/>
-          
-        </ParallaxLayer>
-
-        <ParallaxLayer offset={0} factor={0.5} speed={0.5}>
-          {/* <img src={String(imageSrc)} alt="hero image" style={{
-            "width": '400px'
-          }} /> */}
-        </ParallaxLayer>
-
-        <ParallaxLayer offset={1} factor={2} style={{
-          'padding': '2.5vw',
-          'width': '95vw'
-        }}>
+      <Layout >
+          <Hero />
           <ArticlePreviewGrid
           title='Latest Articles'
           articles={data.articles.edges}
           browseMoreHref='/archive/'
 
           />
-        </ParallaxLayer>
-
-        <ParallaxLayer offset={2} factor={1} speed={0.5} style={{
-          'padding': '2.5vw',
-          'width': '95vw'
-        }} >
           < Podcast />
-        </ParallaxLayer>
-
-        <ParallaxLayer offset={3} factor={0.5} speed={0.2}>
           <Contact />
-        </ParallaxLayer>
-        {/* <Projects /> */}
-        <Footer />
-      </Parallax>
+          <Footer />
+     </Layout>
     </div>
-    // </Layout>
 
     
   )

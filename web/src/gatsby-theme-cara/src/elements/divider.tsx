@@ -24,26 +24,9 @@ const Divider = ({
   children = null,
   className = ``,
 }: DividerProps) => (
-  <ParallaxLayer
-    sx={{
-      position: `absolute`,
-      width: `full`,
-      height: `full`,
-      background: bg,
-      backgroundColor: bg,
-      "#contact-wave": {
-        color: fill,
-        fill: `currentColor`,
-      },
-      clipPath,
-    }}
-    speed={speed}
-    offset={offset}
-    factor={factor}
-    className={className}
-  >
+  <div>
     {children}
-  </ParallaxLayer>
+  </div>
 )
 
 export default Divider
